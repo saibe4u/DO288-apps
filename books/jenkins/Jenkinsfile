@@ -1,4 +1,27 @@
-pipeline {
+ppeline {
+    options {
+        // set a timeout of 60 minutes for this pipeline
+        timeout(time: 60, unit: 'MINUTES')
+    }
+    agent {
+      node {
+        label 'nodejs'
+      }
+    }
+
+    environment {
+        DEV_PROJECT = "youruser-books-dev"
+        STAGE_PROJECT = "youruser-books-stage"
+        APP_GIT_URL = "https://github.com/youruser/DO288-apps"
+        NEXUS_SERVER = "http://nexus-common.apps.cluster.domain.example.com/repository/nodejs"
+
+        // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
+        APP_NAME = "books"
+    }
+
+
+"~/DO288/solutions/custom-pipeline/Jenkinsfile" 151L, 5124C   1,1           Top
+yipeline {
     options {
         // set a timeout of 60 minutes for this pipeline
         timeout(time: 60, unit: 'MINUTES')
