@@ -27,9 +27,30 @@ pipeline {
 
         // TODO: ADD AN APPROVAL STAGE
 
-        stage('stage 3') {
+        This is the ldpipeline {
+    options {
+        // set a timeout of 30 minutes for this pipeline
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    agent {
+      node {
+        label 'master'
+      }
+    }
+
+    stages {
+
+        stage('stage 1') {
             steps {
-                sh 'echo hello from stage 3!. This is the last stage...'
+                script {
+                    openshift.withCluster() {
+                        openshift.withProject() {
+                                echo "stage 1: using project: ${openshift.project()} in cluster ${openshift.cluster()}"
+                        }
+                    }
+                }
+"~/DO288/solutions/simple-pipeline/Jenkinsfile" 47L, 1063C    1,1           Top
+st stage...'
             }
         }
 
